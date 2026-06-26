@@ -1,0 +1,45 @@
+:root {
+  --ink:   #0F0E0D;
+  --paper: #F7F6F2;
+  --mist:  #E8E6DF;
+  --slate: #6B6760;
+  --signal:#2563EB;
+  --signal-lt:#EFF4FF;
+  --green: #16A34A;
+  --green-lt:#F0FDF4;
+  --r: 10px;
+  --ff-display: 'Syne', sans-serif;
+  --ff-body: 'Inter', sans-serif;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--ff-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  cursor: pointer;
+  font-family: var(--ff-body);
+}
+
+input {
+  font-family: var(--ff-body);
+}
+
+a {
+  text-decoration: none;
+}
