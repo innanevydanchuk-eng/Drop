@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Landing from './pages/Landing';
 import Dashboard from './Dashboard';
+import ClientPortal from './ClientPortal';
 import './App.css';
 
 export default function App() {
@@ -30,6 +31,7 @@ export default function App() {
             )
           }
         />
+        <Route path="/p/:slug" element={<ClientPortal />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
