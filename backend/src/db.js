@@ -110,3 +110,38 @@ export function updatePaymentStatus(id, status) {
 export function getPaymentsByPortalId(portalId) {
   return query(`SELECT * FROM payments WHERE portal_id = '${portalId}' ORDER BY created_at DESC`);
 }
+
+// ─── Events / Lead Tracking ──────────────────────────────
+
+export function logEvent({ eventType, userId = null, portalId = null, metadata = null }) {
+  const id = uuidv4();
+  const userIdVal = userId ? `'${userId}'` : 'NULL';
+  const portalIdVal = portalId ? `'${portalId}'` : 'NULL';
+  const metaString = metadata ? `'${JSON.stringify(metadata).replace(/'/g, "''")}'` : 'NULL';
+  query(
+    `INSERT INTO events (id, event_type, user_id, portal_id, metadata) VALUES ('${id}', '${eventType}', ${userIdVal}, ${portalIdVal}, ${metaString})`
+  );
+  return { id, eventType };
+}
+
+export function getEventStats() {
+  return query(`SELECT event_type, COUNT(*) as count, DATE(created_at) as date FROM events WHERE created_at >= datetime('now', '-30 days') GROUP BY event_type, DATE(created_at) ORDER BY date DESC, event_type`);
+}
+
+export function getTotalEventCounts() {
+  return query(`SELECT event_type, COUNT(*) as count FROM events GROUP BY event_type ORDER BY count DESC`);
+}
+
+export function getRecentEvents(limit = 20) {
+  return query(`SELECT * FROM events ORDER BY created_at DESC LIMIT ${limit}`);
+}
+
+export function getUserCount() {
+  const rows = query('SELECT COUNT(*) as count FROM users');
+  return rows[0]?.count || 0;
+}
+
+export function getPortalCount() {
+  const rows = query('SELECT COUNT(*) as count FROM portals');
+  return rows[0]?.count || 0;
+}

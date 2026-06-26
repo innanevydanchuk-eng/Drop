@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import { createUser, findUserByEmail, findUserById } from '../db.js';
+import { createUser, findUserByEmail, findUserById, logEvent } from '../db.js';
 import { requireAuth } from '../middleware/auth.js';
 
 const router = Router();
@@ -33,6 +33,14 @@ router.post('/signup', async (req, res) => {
 
     // Create user
     const user = createUser({ email, name, passwordHash });
+
+    // Log signup event for lead tracking
+    try { logEvent({ eventType: 'signup', userId: user.id }); } catch (e) { /* silent */ }
+
+    // Send welcome email (non-blocking, graceful fail)
+    try {
+      import('../email.js').then(m => m.sendWelcomeEmail(email, name).catch(() => {}));
+    } catch (e) { /* silent */ }
 
     // Generate JWT
     const token = jwt.sign({ id: user.id, email: user.email, name: user.name }, JWT_SECRET, {

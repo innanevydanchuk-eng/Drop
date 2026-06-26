@@ -6,6 +6,9 @@ import { dirname, join } from "path";
 import multer from "multer";
 import fs from "fs";
 import authRoutes from "./routes/auth.js";
+import analyticsRoutes from "./routes/analytics.js";
+import trackRoutes from "./routes/track.js";
+import trackRoutes from "./routes/track.js";
 
 dotenv.config();
 
@@ -49,6 +52,9 @@ app.get("/api/health", (req, res) => {
 });
 
 app.use("/api/auth", authRoutes);
+app.use("/api/analytics", analyticsRoutes);
+app.use("/api/track", trackRoutes);
+app.use("/api/track", trackRoutes);
 
 // Portal data store (in-memory, persisted to file for restarts)
 const DATA_FILE = join(__dirname, "..", "portals.json");
