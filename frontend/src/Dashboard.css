@@ -1,0 +1,369 @@
+/* ===== DASHBOARD PAGE LAYOUT ===== */
+.dash-page {
+  min-height: 100vh;
+  background: var(--paper);
+}
+
+/* ===== DASHBOARD NAVBAR ===== */
+.dash-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 32px;
+  border-bottom: 1px solid var(--mist);
+  background: rgba(247,246,242,0.95);
+  backdrop-filter: blur(8px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.dash-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.dash-nav-plan {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--slate);
+  background: var(--mist);
+  padding: 4px 12px;
+  border-radius: 100px;
+  letter-spacing: 0.03em;
+}
+
+.dash-nav .btn-nav {
+  font-size: 13px;
+  padding: 7px 16px;
+}
+
+/* ===== DEMO BANNER ===== */
+.dash-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 10px 20px;
+  background: var(--signal-lt);
+  color: var(--signal);
+  font-size: 13px;
+  font-weight: 500;
+  border-bottom: 1px solid rgba(37,99,235,0.15);
+}
+
+.dash-banner-close {
+  background: none;
+  border: none;
+  color: var(--signal);
+  font-size: 20px;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0 4px;
+  opacity: 0.6;
+}
+
+.dash-banner-close:hover {
+  opacity: 1;
+}
+
+/* ===== CONTENT AREA ===== */
+.dash-content {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 32px 24px 60px;
+}
+
+.dash-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.dash-greeting {
+  font-family: var(--ff-display);
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.dash-subtitle {
+  font-size: 14px;
+  color: var(--slate);
+  margin-top: 4px;
+}
+
+/* ===== STATS ===== */
+.dash-content .stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-bottom: 32px;
+}
+
+.dash-content .stat-card {
+  background: white;
+  border: 1.5px solid var(--mist);
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.dash-content .stat-label {
+  font-size: 12px;
+  color: var(--slate);
+  font-weight: 500;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.dash-content .stat-value {
+  font-family: var(--ff-display);
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.dash-content .stat-change {
+  font-size: 12px;
+  color: var(--green);
+  margin-top: 6px;
+}
+
+/* ===== PORTAL LIST ===== */
+.dash-list-header {
+  margin-bottom: 12px;
+}
+
+.dash-content .projects-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--slate);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.dash-content .project-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.dash-content .project-row {
+  background: white;
+  border: 1.5px solid var(--mist);
+  border-radius: 10px;
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  cursor: pointer;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.dash-content .project-row:hover {
+  border-color: var(--signal);
+  box-shadow: 0 0 0 3px var(--signal-lt);
+}
+
+.dash-content .project-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: var(--ff-display);
+  flex-shrink: 0;
+}
+
+.dash-content .project-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.dash-content .project-name {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.dash-content .project-meta {
+  font-size: 12px;
+  color: var(--slate);
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dash-content .project-status {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 100px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.status-active {
+  background: var(--signal-lt);
+  color: var(--signal);
+}
+
+.status-waiting {
+  background: #FEF3C7;
+  color: #92400E;
+}
+
+.status-review {
+  background: var(--signal-lt);
+  color: var(--signal);
+}
+
+.status-done {
+  background: var(--green-lt);
+  color: var(--green);
+}
+
+.copy-icon {
+  font-size: 14px;
+  opacity: 0;
+  transition: opacity 0.15s;
+  flex-shrink: 0;
+}
+
+.project-row:hover .copy-icon {
+  opacity: 0.6;
+}
+
+.copy-icon:hover {
+  opacity: 1 !important;
+}
+
+/* ===== LOADING STATE ===== */
+.dash-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  gap: 16px;
+  color: var(--slate);
+}
+
+.dash-spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid var(--mist);
+  border-top-color: var(--signal);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ===== ERROR STATE ===== */
+.dash-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  gap: 12px;
+  text-align: center;
+  padding: 24px;
+}
+
+.dash-error-icon {
+  font-size: 48px;
+}
+
+.dash-error h2 {
+  font-family: var(--ff-display);
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.dash-error p {
+  font-size: 14px;
+  color: var(--slate);
+  margin-bottom: 8px;
+}
+
+/* ===== EMPTY STATE ===== */
+.dash-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  gap: 12px;
+  text-align: center;
+  padding: 40px 24px;
+  background: white;
+  border: 2px dashed var(--mist);
+  border-radius: 14px;
+}
+
+.dash-empty-icon {
+  font-size: 48px;
+  margin-bottom: 8px;
+}
+
+.dash-empty h3 {
+  font-family: var(--ff-display);
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.dash-empty p {
+  font-size: 14px;
+  color: var(--slate);
+  max-width: 400px;
+  line-height: 1.65;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .dash-content .stats-row {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .dash-nav {
+    padding: 12px 16px;
+  }
+
+  .dash-content {
+    padding: 20px 16px 40px;
+  }
+
+  .dash-greeting {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 480px) {
+  .dash-content .stats-row {
+    grid-template-columns: 1fr;
+  }
+
+  .dash-content .project-row {
+    flex-wrap: wrap;
+  }
+
+  .dash-content .project-status {
+    margin-left: auto;
+  }
+
+  .dash-nav-plan {
+    display: none;
+  }
+}
