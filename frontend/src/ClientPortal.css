@@ -1,0 +1,484 @@
+/* ===== CLIENT PORTAL PAGE ===== */
+.portal-page {
+  min-height: 100vh;
+  background: var(--paper);
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== HEADER ===== */
+.portal-header {
+  border-bottom: 1px solid var(--mist);
+  background: white;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.portal-header-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.portal-logo {
+  font-family: var(--ff-display);
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.portal-logo span { color: var(--signal); }
+
+.portal-header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.portal-status-badge {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 14px;
+  border-radius: 100px;
+}
+
+/* ===== MAIN ===== */
+.portal-main {
+  flex: 1;
+  max-width: 720px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 32px 24px 60px;
+}
+
+.portal-card {
+  background: white;
+  border: 1.5px solid var(--mist);
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.04);
+}
+
+/* ===== PROJECT INFO ===== */
+.portal-project {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.portal-project-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 700;
+  font-family: var(--ff-display);
+  flex-shrink: 0;
+}
+
+.portal-project-name {
+  font-family: var(--ff-display);
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+}
+
+.portal-client-name {
+  font-size: 14px;
+  color: var(--slate);
+  margin-top: 2px;
+}
+
+/* ===== STEPS ===== */
+.portal-steps {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin-bottom: 32px;
+  padding: 16px 0;
+}
+
+.portal-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  position: relative;
+  flex: 1;
+}
+
+.portal-step::after {
+  content: '';
+  position: absolute;
+  top: 16px;
+  left: calc(50% + 18px);
+  right: calc(-50% + 18px);
+  height: 2px;
+  background: var(--mist);
+  z-index: 0;
+}
+
+.portal-step:last-child::after { display: none; }
+
+.portal-step.active::after {
+  background: var(--signal);
+}
+
+.portal-step-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  font-family: var(--ff-display);
+  background: var(--mist);
+  color: var(--slate);
+  position: relative;
+  z-index: 1;
+  transition: all 0.2s;
+}
+
+.portal-step.active .portal-step-circle {
+  background: var(--signal);
+  color: white;
+}
+
+.portal-step.current .portal-step-circle {
+  box-shadow: 0 0 0 3px var(--signal-lt);
+}
+
+.portal-step-label {
+  font-size: 11px;
+  color: var(--slate);
+  font-weight: 500;
+  text-align: center;
+}
+
+.portal-step.active .portal-step-label {
+  color: var(--signal);
+  font-weight: 600;
+}
+
+/* ===== UPLOAD ZONE ===== */
+.portal-upload-zone {
+  border: 2px dashed var(--mist);
+  border-radius: 14px;
+  padding: 48px 24px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: #FAFAF9;
+  margin-bottom: 24px;
+}
+
+.portal-upload-zone:hover {
+  border-color: var(--signal);
+  background: var(--signal-lt);
+}
+
+.portal-upload-zone.drag-over {
+  border-color: var(--signal);
+  background: var(--signal-lt);
+  border-style: solid;
+  transform: scale(1.01);
+}
+
+.portal-upload-zone.uploading {
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.portal-upload-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.portal-upload-title {
+  font-family: var(--ff-display);
+  font-size: 17px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: var(--ink);
+}
+
+.portal-upload-sub {
+  font-size: 13px;
+  color: var(--slate);
+}
+
+.portal-upload-progress {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+/* ===== FILE LIST ===== */
+.portal-files {
+  margin-bottom: 24px;
+}
+
+.portal-files-title {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: var(--ink);
+}
+
+.portal-files-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.portal-file-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  background: var(--paper);
+  border: 1px solid var(--mist);
+  border-radius: 8px;
+  transition: border-color 0.15s;
+}
+
+.portal-file-row:hover {
+  border-color: var(--signal);
+}
+
+.portal-file-icon {
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.portal-file-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.portal-file-name {
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.portal-file-meta {
+  font-size: 11px;
+  color: var(--slate);
+  margin-top: 1px;
+}
+
+.portal-file-download {
+  font-size: 18px;
+  color: var(--slate);
+  text-decoration: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: background 0.15s, color 0.15s;
+  flex-shrink: 0;
+}
+
+.portal-file-download:hover {
+  background: var(--signal-lt);
+  color: var(--signal);
+}
+
+/* ===== NOTES ===== */
+.portal-notes {
+  margin-bottom: 24px;
+}
+
+.portal-notes-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--ink);
+}
+
+.portal-notes-input {
+  width: 100%;
+  border: 1.5px solid var(--mist);
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-family: var(--ff-body);
+  font-size: 14px;
+  color: var(--ink);
+  background: var(--paper);
+  resize: vertical;
+  outline: none;
+  transition: border-color 0.15s, background 0.15s;
+  line-height: 1.5;
+}
+
+.portal-notes-input:focus {
+  border-color: var(--signal);
+  background: white;
+}
+
+.portal-notes-input::placeholder {
+  color: #B0ACA5;
+}
+
+/* ===== ACTIONS ===== */
+.portal-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.portal-btn {
+  width: 100%;
+  padding: 14px;
+  font-size: 15px;
+  text-align: center;
+}
+
+.portal-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.portal-actions-row {
+  display: flex;
+  gap: 12px;
+}
+
+.portal-actions-row .portal-btn {
+  flex: 1;
+}
+
+.portal-pay-btn {
+  background: #059669 !important;
+  box-shadow: 0 4px 14px rgba(5,150,105,0.3) !important;
+  font-size: 17px !important;
+  padding: 18px !important;
+}
+
+.portal-pay-btn:hover {
+  box-shadow: 0 6px 20px rgba(5,150,105,0.35) !important;
+}
+
+.portal-complete-msg {
+  text-align: center;
+  padding: 20px;
+  font-size: 18px;
+  font-weight: 600;
+  font-family: var(--ff-display);
+  color: var(--green);
+  background: var(--green-lt);
+  border-radius: 10px;
+}
+
+/* ===== FOOTER ===== */
+.portal-footer {
+  border-top: 1px solid var(--mist);
+  background: white;
+  padding: 20px 24px;
+  margin-top: auto;
+}
+
+.portal-footer-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+  color: var(--slate);
+}
+
+.portal-footer-cta {
+  color: var(--signal);
+  font-weight: 600;
+  text-decoration: none;
+  transition: opacity 0.15s;
+}
+
+.portal-footer-cta:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+/* ===== LOADING / ERROR ===== */
+.portal-loading,
+.portal-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  gap: 16px;
+  text-align: center;
+  padding: 24px;
+}
+
+.portal-error-icon {
+  font-size: 48px;
+}
+
+.portal-error h2 {
+  font-family: var(--ff-display);
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.portal-error p {
+  font-size: 14px;
+  color: var(--slate);
+}
+
+.portal-error-sub {
+  font-size: 13px !important;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 600px) {
+  .portal-card {
+    padding: 20px;
+    border-radius: 12px;
+  }
+
+  .portal-project-name {
+    font-size: 20px;
+  }
+
+  .portal-upload-zone {
+    padding: 32px 16px;
+  }
+
+  .portal-actions-row {
+    flex-direction: column;
+  }
+
+  .portal-steps {
+    padding: 12px 0;
+  }
+
+  .portal-step-circle {
+    width: 28px;
+    height: 28px;
+    font-size: 11px;
+  }
+
+  .portal-footer-inner {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
